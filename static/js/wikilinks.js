@@ -33,7 +33,9 @@
         
         // Ensure leading slash, trailing slash
         const url = '/' + slug.replaceAll(/^\/+|\/+$/g, '') + '/';
-        return url;
+        // Ensure we respect the base URL
+        const base = document.querySelector('base')?.getAttribute('href') || '/';
+        return base + url;
     };
 
     /**
