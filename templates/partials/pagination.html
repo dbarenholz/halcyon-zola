@@ -1,0 +1,10 @@
+{# This partial renders previous/next pagination controls for sections. #}
+<nav class="pagination" aria-label="Pagination">
+  {% if paginator.previous %}
+    <a class="chip" href="{{ paginator.previous }}">Previous</a>
+  {% endif %}
+  <span>Page {{ paginator.current_index }} of {{ paginator.number_pagers }}</span>
+  {% if paginator.next %}
+    <a class="chip" href="{{ paginator.next }}">Next</a>
+  {% endif %}
+</nav>

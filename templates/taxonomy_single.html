@@ -1,0 +1,22 @@
+{# This template renders one taxonomy term page (for example one tag). #}
+{% extends "base.html" %}
+
+{% block content %}
+  <section class="stack">
+    <header class="section-heading-row">
+      <h1>{{ taxonomy.name | title }}: {{ term.name }}</h1>
+      <a class="chip" href="/{{ taxonomy.name }}/">All {{ taxonomy.name }}</a>
+    </header>
+
+    {% if term.pages | length > 0 %}
+      <div class="post-grid">
+        {% for post in term.pages | sort(attribute="date") | reverse %}
+          {% set_global post_item = post %}
+          {% include "partials/post_card.html" %}
+        {% endfor %}
+      </div>
+    {% else %}
+      <p>No content has this {{ taxonomy.name | lower }} yet.</p>
+    {% endif %}
+  </section>
+{% endblock content %}

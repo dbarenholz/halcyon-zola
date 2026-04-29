@@ -1,0 +1,21 @@
+:root {
+    --footer-bg: light-dark(var(--halcyon-base-grey-lighter), var(--halcyon-base-blue-02));
+    --footer-border: light-dark(var(--halcyon-base-grey-light), var(--halcyon-base-blue-02));
+}
+
+.footer {
+    display: flex;
+    justify-content: center;
+    margin-top: var(--space-8);
+    color: var(--halcyon-text-muted);
+    font-size: var(--font-size-small);
+    text-align: center;
+    border-top: 1px solid var(--footer-border);
+    background: var(--footer-bg);
+
+    .footer__content {
+        font-family: var(--font-serif);
+        max-width: var(--container);
+        margin: 0;
+    }
+}

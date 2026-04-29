@@ -1,0 +1,41 @@
+/// Styling for a blockquote, e.g.
+/// > This fella
+@use "md/blockquote";
+
+/// Styling for a callout, e.g.
+/// > [!NOTE]
+/// > This is a note.
+@use "md/callout";
+
+/// Styling for `inline` and normal code blocks, e.g.
+/// ```scss
+/// @use "md/code";
+/// ```
+@use "md/code";
+
+/// Styling for headings, e.g.
+/// # Heading 1
+@use "md/headings";
+
+/// Styling for internal and external links, e.g.
+/// [Google](https://www.google.com)
+@use "md/link";
+
+/// Styling for ordered and unordered lists, e.g.
+/// - Item 1
+/// - Item 2
+@use "md/list";
+
+/// Styling for inline and display math blocks, e.g.
+/// $$E = mc^2$$
+@use "md/math";
+
+/// Styling for tables, e.g.
+/// | Header 1 | Header 2 |
+/// | -------- | -------- |
+/// | Cell 1   | Cell 2   |
+@use "md/table";
+
+/// Styling for tags, e.g.
+/// #books #fiction
+@use "md/tag";

@@ -1,0 +1,14 @@
+:root {
+    --link-color: var(--halcyon-palette-lilac);
+    --link-color-hover: color-mix(in hsl, var(--halcyon-palette-lilac), var(--halcyon-palette-pink) 28%);
+}
+
+a {
+    color: var(--link-color);
+    text-decoration-color: color-mix(in hsl, var(--link-color), transparent 35%);
+    text-underline-offset: 0.12em;
+}
+
+a:hover {
+    color: var(--link-color-hover);
+}

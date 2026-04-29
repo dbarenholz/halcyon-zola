@@ -1,0 +1,14 @@
+/// Defines virtually all colors of the theme. Other color variables should generally be defined in terms of these.
+@use "base/color";
+
+/// Defines how large our radius should be for rounded corners. If we want a radius, they should use these variables.
+@use "base/radius";
+
+/// Defines spacing variables for margins and padding. If we want to add spacing, we should use these variables.
+@use "base/spacing";
+
+/// Defines the default border width. If something should have borders, they should use that variables for the size and style.
+@use "base/borders";
+
+/// Defines our fonts, and basic font sizes. Other font-related things (e.g. md/headings) are defined in terms of these variables.
+@use "base/typography";

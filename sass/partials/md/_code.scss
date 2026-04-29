@@ -1,0 +1,235 @@
+// Current state: mostly good
+// specific languages can use touchups, will be done once I use the theme and get annoyed by it!
+
+code,
+pre {
+    font-family: var(--font-mono);
+}
+
+// Code related colors, in function of colors.scss file.
+:root {
+    --code-inline: var(--halcyon-palette-cyan);
+    --code-inline-bg: light-dark(var(--halcyon-base-grey-lightest), var(--halcyon-base-blue-02));
+    --code-bg: light-dark(var(--halcyon-base-grey-lightest), var(--halcyon-base-blue-02));
+    --code-inline-border: light-dark(var(--halcyon-base-blue-05), var(--halcyon-base-blue-03));
+    --code-block-border: light-dark(var(--halcyon-base-blue-04), var(--halcyon-base-blue-03-04-mix));
+
+    --code-line-no: var(--halcyon-text-muted);
+    --code-text: var(--halcyon-text-normal);
+    --code-fallback: var(--halcyon-text-muted);
+
+    --code-highlight: light-dark(var(--halcyon-base-grey-light), var(--halcyon-base-blue-02-03-mix));
+    --code-punctuation: var(code-text);
+
+    --code-variable: var(--halcyon-palette-cyan);
+    --code-function: var(--halcyon-palette-yellow);
+    --code-operator: var(--halcyon-palette-orange);
+    --code-error: var(--halcyon-palette-salmon);
+    --code-keyword: var(--halcyon-palette-lilac);
+    --code-const: var(--halcyon-palette-lilac);
+    --code-comment: var(--halcyon-text-muted);
+    --code-entity: var(--halcyon-palette-orange);
+
+    --code-string-literal: var(--halcyon-palette-lime);
+
+    // markdown specific
+    --code-md-bold: var(--halcyon-palette-salmon);
+    --code-md-italic: var(--halcyon-palette-salmon);
+    --code-md-link: var(--halcyon-palette-lilac);
+    --code-md-quote: var(--halcyon-palette-yellow);
+    --code-md-header: var(--halcyon-palette-lime);
+
+    // git diff specific
+    --code-diff-add: var(--halcyon-palette-lime);
+    --code-diff-del: var(--halcyon-palette-salmon);
+}
+
+// Lines; as per docs.
+.giallo-l {
+    display: inline-block;
+    min-height: 1lh;
+    width: 100%;
+}
+
+// Line numbers; as per docs.
+.giallo-ln {
+    color: var(--code-line-no);
+    display: inline-block;
+    margin-right: 0.4em;
+    min-width: 3ch;
+    opacity: 0.8;
+    padding: 0.4em;
+    text-align: right;
+    user-select: none;
+}
+
+// if there are no line numbers, still add padding
+.giallo-l:not(:has(> .giallo-ln)) {
+    box-sizing: border-box;
+    padding-inline-start: 1em;
+
+    &:first-child {
+        padding-top: 0.4em;
+    }
+    &:last-child {
+        padding-bottom: 0.4em;
+    }
+}
+
+code {
+    // make all code smaller
+    font-size: smaller;
+
+    // styles for inline codeblocks
+    &:not([data-lang]) {
+        color: var(--code-inline);
+        background-color: var(--code-inline-bg);
+        border: 1px solid var(--code-inline-border);
+        border-radius: var(--radius-2);
+        margin: 0 0.15em;
+    }
+}
+
+// fix plaintext codeblocks
+code[data-lang="plain"] {
+    color: var(--code-text);
+}
+
+// fix diff source
+code[data-lang="diff"]>span.giallo-l>span.z-source {
+    color: var(--code-text);
+}
+
+pre {
+    border: 1px solid var(--code-block-border);
+    border-radius: var(--radius-3);
+    background-color: var(--code-bg);
+    overflow-x: auto;
+}
+
+pre code {
+    font-size: 0.95em;
+}
+
+.z-code {
+    color: var(--code-fallback);
+    background-color: var(--code-bg);
+    border: 1px solid var(--code-block-border);
+    border-radius: var(--radius-3);
+    overflow-x: auto;
+}
+
+blockquote pre,
+blockquote .z-code {
+    border-color: color-mix(in hsl, var(--code-block-border), var(--halcyon-palette-lilac) 25%);
+}
+
+.z-hl {
+    background-color: var(--code-highlight);
+}
+
+.z-text {
+    color: var(--code-text);
+}
+
+.z-punctuation {
+    color: var(--code-punctuation);
+}
+
+.z-comment {
+    color: var(--code-comment);
+    font-style: italic;
+}
+
+.z-string {
+    color: var(--code-string-literal);
+}
+
+.z-keyword {
+    color: var(--code-keyword);
+}
+
+.z-variable {
+    color: var(--code-variable);
+}
+
+.z-variable.z-constant {
+    color: var(--code-variable);
+}
+
+.z-constant {
+    color: var(--code-const);
+}
+
+.z-storage {
+    color: var(--code-keyword)
+}
+
+.z-function {
+    color: var(--code-function);
+}
+
+.z-property {
+    color: var(--code-variable);
+}
+
+.z-entity {
+    color: var(--code-entity);
+}
+
+.z-support {
+    color: var(--code-variable)
+}
+
+.z-support.z-type {
+    color: var(--code-function)
+}
+
+.z-source {
+    color: var(--code-variable)
+}
+
+.z-tag {
+    color: var(--code-variable)
+}
+
+.z-punctuation.z-tag {
+    color: var(--code-punctuation);
+}
+
+// markdown specific -- OK light and dark
+.z-markup.z-bold {
+    color: var(--code-md-bold);
+    font-weight: bold;
+}
+
+.z-markup.z-italic {
+    color: var(--code-md-italic);
+    font-style: italic;
+}
+
+.z-markup.z-strikethrough {
+    text-decoration: line-through;
+}
+
+.z-markup.z-link {
+    color: var(--code-md-link);
+    text-decoration: underline;
+}
+
+.z-markup.z-quote {
+    color: var(--code-md-quote)
+}
+
+.z-markdown.z-heading {
+    color: var(--code-md-header)
+}
+
+// diff
+.z-deleted {
+    color: var(--code-diff-del);
+}
+
+.z-inserted {
+    color: var(--code-diff-add);
+}

@@ -1,0 +1,51 @@
+{# This partial contains metadata and shared head assets. #}
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="color-scheme" content="light dark" />
+  <title>
+    {% if page and page.title %}
+      {% if config.title %}
+        {{ page.title }} | {{ config.title }}
+      {% else %}
+        {{ page.title }}
+      {% endif %}
+    {% elif section and section.title %}
+      {% if config.title %}
+        {{ section.title }} | {{ config.title }}
+      {% else %}
+        {{ section.title }}
+      {% endif %}
+    {% endif %}
+  </title>
+  {% if config.description %}
+    <meta name="description" content="{{ config.description }}" />
+  {% endif %}
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,700;1,400;1,700&family=JetBrains+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Noto+Serif+JP:wght@400;700&family=Roboto+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,700;1,400;1,700&family=JetBrains+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Noto+Serif+JP:wght@400;700&family=Roboto+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap" media="print" onload="this.media='all'" />
+  <noscript>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,700;1,400;1,700&family=JetBrains+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Noto+Serif+JP:wght@400;700&family=Roboto+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap" />
+  </noscript>
+
+  <!-- MathJax -->
+  <script src="{{ get_url(path='js/mathjax.js') }}"></script>
+  <script async src = "https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js"></script>
+
+  <!-- Mermaid (lazily loads mermaid only on pages that has it; is fast enough)-->
+  <script src="{{ get_url(path='js/mermaid.js') }}" defer></script>
+
+  <!-- Lucide icons -->
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js" defer></script>
+  <script src="{{ get_url(path='js/lucide.js') }}" defer></script>
+
+  <!-- Wikilinks (Obsidian-style [[page]] syntax) -->
+  <script src="{{ get_url(path='js/wikilinks.js') }}" defer></script>
+
+  <link rel="stylesheet" href="{{ get_url(path='main.css') }}" />
+  <link rel="alternate" type="application/atom+xml" title="{{ config.title }} Atom Feed" href="{{ get_url(path='atom.xml') }}" />
+</head>

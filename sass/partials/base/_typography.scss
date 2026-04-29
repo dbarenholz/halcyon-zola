@@ -1,0 +1,25 @@
+// We use the following fonts:
+// - Inter as sans serif fonts, for most things.
+// - Roboto Serif as serif fonts, for headers only.
+// - Noto Serif JP as font for Japanese.
+// - Jetbrains Mono as font for code.
+
+// Start of actual CSS for typography.
+:root {
+    // Font families, from font-faces above
+    --font-sans: "Inter", sans-serif;
+    --font-serif: "Roboto Serif", serif;
+    --font-mono: "JetBrains Mono", monospace;
+
+    // Font sizes
+    --font-size-base: 1rem;
+    --font-size-small: calc(0.92 * var(--font-size-base));
+    --font-size-title: calc(1.3 * var(--font-size-base));
+
+    --header-line-height-base: 1.1;
+    --text-line-height: 1.5;
+
+    --text-color: var(--halcyon-text-normal);
+    --text-color-muted: var(--halcyon-text-muted);
+}
+

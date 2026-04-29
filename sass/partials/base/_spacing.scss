@@ -1,0 +1,17 @@
+:root {
+    // Container size used for responsive layout
+    --container: 72rem;
+    --page-padding-inline: clamp(var(--space-4), 4vw, var(--space-8));
+
+    // We'll work with 0.25rem units of spacing
+    --spacing-unit: 0.25rem;
+
+    // And have a few variables based on it
+    --space-2: calc(2 * var(--spacing-unit)); // 0.5rem;
+    --space-3: calc(3 * var(--spacing-unit)); // 0.75rem;
+    --space-4: calc(4 * var(--spacing-unit)); // 1rem;
+    --space-5: calc(5 * var(--spacing-unit)); // 1.25rem;
+    --space-6: calc(6 * var(--spacing-unit)); // 1.5rem;
+    --space-8: calc(8 * var(--spacing-unit)); // 2rem;
+    --space-10: calc(10 * var(--spacing-unit)); //  2.5rem;
+}

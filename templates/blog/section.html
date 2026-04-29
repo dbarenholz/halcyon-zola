@@ -1,0 +1,39 @@
+{# This template specializes section rendering for the blog index. #}
+{% extends "base.html" %}
+
+{% block content %}
+  <section class="stack">
+    <header class="section-heading-row">
+      <h1>{{ section.title }}</h1>
+      <a class="chip" href="{{ section.permalink }}atom.xml">Feed</a>
+    </header>
+
+    {% if section.content %}
+      <div class="prose">
+        {% set toc_marker = "<p>[TOC]</p>" %}
+        {% if section.content is containing(toc_marker) %}
+          {% include "partials/toc.html" %}
+        {% endif %}
+        {{ section.content | replace(from=toc_marker, to="") | safe }}
+      </div>
+    {% endif %}
+
+    <div class="post-grid">
+      {% if paginator %}
+        {% for post in paginator.pages %}
+          {% set_global post_item = post %}
+          {% include "partials/post_card.html" %}
+        {% endfor %}
+      {% else %}
+        {% for post in section.pages %}
+          {% set_global post_item = post %}
+          {% include "partials/post_card.html" %}
+        {% endfor %}
+      {% endif %}
+    </div>
+
+    {% if paginator %}
+      {% include "partials/pagination.html" %}
+    {% endif %}
+  </section>
+{% endblock content %}

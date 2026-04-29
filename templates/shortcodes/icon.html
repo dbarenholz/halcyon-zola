@@ -1,0 +1,20 @@
+{% set icon_name = body|trim %}
+{% if icon_name == '' %}
+  {% set icon_name = name|default(value='')|trim %}
+{% endif %}
+{% if icon_name == '' %}
+  {% set icon_name = n|default(value='circle-question-mark')|trim %}
+{% endif %}
+
+{% set icon_color = '' %}
+{% if color is defined %}
+  {% set icon_color = color %}
+{% elif c is defined %}
+  {% set icon_color = c %}
+{% endif %}
+
+{% if icon_color != '' %}
+  <i data-lucide="{{ icon_name }}" color="{{ icon_color }}"></i>
+{% else %}
+  <i data-lucide="{{ icon_name }}"></i>
+{% endif %}

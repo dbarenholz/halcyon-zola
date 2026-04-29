@@ -1,0 +1,41 @@
+# The URL the site will be built for
+base_url = "https://example.com"
+
+# Whether to automatically compile all Sass files in the sass directory
+compile_sass = true
+
+# Whether to build a search index to be used later on by a JavaScript library
+build_search_index = false
+
+# Generate an RSS feed for the site and for the blog section.
+generate_feeds = true
+feed_filenames = ["atom.xml"]
+
+taxonomies = [
+    { name = "tags", feed = true },
+    { name = "categories", feed = true },
+]
+
+[markdown]
+render_emoji = true
+
+[markdown.highlighting]
+dark_theme = "catppuccin-mocha"
+light_theme = "catppuccin-mocha"
+style = "class"
+error_on_missing_language = true
+
+[extra]
+
+[extra.halcyon]
+default_theme = "dark"
+blog_section = "blog"
+show_reading_time = true
+nav = [
+    # Add as many entries here as you want
+    # if you add path ="/foo/", we expect a "content/foo.md" file
+    { name = "Code", path = "/code/" },
+    { name = "Testing", path = "/testing/" },
+    { name = "Math", path = "/math/" },
+    { name = "Blog", path = "/blog/" },
+]

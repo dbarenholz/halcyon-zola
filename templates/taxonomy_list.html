@@ -1,0 +1,22 @@
+{# This template renders the list of taxonomy terms (for example all tags). #}
+{% extends "base.html" %}
+
+{% block content %}
+  <section class="stack">
+    <header class="section-heading-row">
+      <h1>{{ taxonomy.name | title }}</h1>
+    </header>
+
+    {% if terms | length > 0 %}
+      <ul class="tag-list" aria-label="{{ taxonomy.name | title }}">
+        {% for term in terms %}
+          <li>
+            <a class="chip" href="{{ term.permalink }}">{{ term.name }} ({{ term.pages | length }})</a>
+          </li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p>No {{ taxonomy.name }} found yet.</p>
+    {% endif %}
+  </section>
+{% endblock content %}

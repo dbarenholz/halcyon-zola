@@ -1,0 +1,33 @@
+{# This template specializes individual blog post rendering. #}
+{% extends "base.html" %}
+
+{% block content %}
+  <article class="prose stack">
+    <p><a href="/blog/">Back to Blog</a></p>
+    <header>
+      <h1>{{ page.title }}</h1>
+      <p class="meta">
+        {% if page.date %}
+          <time datetime="{{ page.date }}">{{ page.date | date(format="%B %d, %Y") }}</time>
+        {% endif %}
+        {% if config.extra.halcyon.show_reading_time | default(value=true) %}
+          <span> • {{ page.reading_time }} min read</span>
+        {% endif %}
+      </p>
+    </header>
+
+    {% set toc_marker = "<p>[TOC]</p>" %}
+    {% if page.content is containing(toc_marker) %}
+      {% include "partials/toc.html" %}
+    {% endif %}
+    {{ page.content | replace(from=toc_marker, to="") | safe }}
+
+    {% if page.taxonomies.tags %}
+      <ul class="tag-list" aria-label="Tags">
+        {% for tag in page.taxonomies.tags %}
+          <li><a class="chip" href="{{ get_taxonomy_url(kind='tags', name=tag) }}">{{ tag }}</a></li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+  </article>
+{% endblock content %}

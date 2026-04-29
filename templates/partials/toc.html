@@ -1,0 +1,30 @@
+{% set toc_items = [] %}
+{% if page and page.toc and page.toc | length > 0 %}
+  {% set toc_items = page.toc %}
+{% elif section and section.toc and section.toc | length > 0 %}
+  {% set toc_items = section.toc %}
+{% endif %}
+
+{% if toc_items | length > 0 %}
+  <details class="toc-container" open>
+    <summary>Table of Contents</summary>
+    <nav class="toc" aria-label="Table of contents">
+      <ul>
+        {% for h1 in toc_items %}
+          <li>
+            <a href="{{ h1.permalink | safe }}">{{ h1.title }}</a>
+            {% if h1.children and h1.children | length > 0 %}
+              <ul>
+                {% for h2 in h1.children %}
+                  <li>
+                    <a href="{{ h2.permalink | safe }}">{{ h2.title }}</a>
+                  </li>
+                {% endfor %}
+              </ul>
+            {% endif %}
+          </li>
+        {% endfor %}
+      </ul>
+    </nav>
+  </details>
+{% endif %}

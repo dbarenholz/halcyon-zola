@@ -1,0 +1,90 @@
+:root {
+    // https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark
+    color-scheme: light dark;
+
+    --halcyon-base-blue-01: #171c28;
+    --halcyon-base-blue-02: #1d2433;
+    --halcyon-base-blue-03: #2f3b54;
+    --halcyon-base-blue-04: #6679a4;
+    --halcyon-base-blue-05: #8695b7;
+
+    // TODO: Create base-blue's for light theme as well?
+    --halcyon-base-grey-dark: #a2aabc;
+    --halcyon-base-grey-light: #d7dce2;
+    --halcyon-base-grey-lighter: #f0f3f7;
+    --halcyon-base-grey-lightest: #e1e7ea;
+    --halcyon-base-grey-tab: #71777f;
+    --halcyon-base-grey-token: #586582;
+    --halcyon-base-grey-scroll: #3f495e;
+    --halcyon-base-grey-scroll-hover: #5c6782;
+
+
+    --halcyon-base-blue-01-02-mix: color-mix(in hsl,
+            var(--halcyon-base-blue-01),
+            var(--halcyon-base-blue-02));
+    --halcyon-base-blue-02-03-mix: color-mix(in hsl,
+            var(--halcyon-base-blue-02),
+            var(--halcyon-base-blue-03));
+    --halcyon-base-blue-03-04-mix: color-mix(in hsl,
+            var(--halcyon-base-blue-03),
+            var(--halcyon-base-blue-04));
+    --halcyon-base-blue-04-05-mix: color-mix(in hsl,
+            var(--halcyon-base-blue-04),
+            var(--halcyon-base-blue-05));
+    --halcyon-base-grey-mix: color-mix(in hsl,
+            var(--halcyon-base-grey-light),
+            var(--halcyon-base-grey-dark));
+
+    // NOTE: semantic variables should use light-dark(color-light, color-dark) so themes work)
+    --halcyon-accent: light-dark(#8a5a00, #ffcc66);
+    --halcyon-palette-cyan: light-dark(#0e7086, #5ccfe6);
+    --halcyon-palette-lime: light-dark(#4d8811, #bae67e);
+    --halcyon-palette-orange: light-dark(#9a4e00, #ffae57);
+    --halcyon-palette-yellow: light-dark(#7b5b00, #ffd580);
+    --halcyon-palette-lilac: light-dark(#5d43a8, #c3a6ff);
+    --halcyon-palette-salmon: light-dark(#b23b45, #ef6b73);
+    --halcyon-palette-blue: light-dark(#305fa8, #7099db);
+    --halcyon-palette-pink: light-dark(#984c86, #f9cff2);
+
+    --halcyon-bg-dark: var(--halcyon-base-blue-01);
+    --halcyon-bg-light: var(--halcyon-base-grey-lighter);
+    --halcyon-bg: light-dark(var(--halcyon-bg-light), var(--halcyon-bg-dark));
+
+    --halcyon-text-normal: light-dark(var(--halcyon-base-blue-01), var(--halcyon-base-grey-light));
+    --halcyon-text-muted: light-dark(#868686, #8695b799);
+
+    --halcyon-math-color: var(--halcyon-accent);
+    --halcyon-math-display-color: var(--halcyon-accent);
+
+    // NOTE: Do not change these names, we use JS to get these resolved values
+    --halcyon-mermaid-background-light: var(--halcyon-bg-light);
+    --halcyon-mermaid-primary-color-light: var(--halcyon-base-grey-lightest);
+    --halcyon-mermaid-primary-text-color-light: var(--halcyon-base-blue-01);
+    --halcyon-mermaid-primary-border-color-light: var(--halcyon-base-blue-04);
+    --halcyon-mermaid-secondary-color-light: var(--halcyon-base-grey-lighter);
+    --halcyon-mermaid-tertiary-color-light: var(--halcyon-base-grey-lightest);
+    --halcyon-mermaid-line-color-light: var(--halcyon-base-blue-03);
+    --halcyon-mermaid-edge-label-background-light: var(--halcyon-base-grey-lighter);
+    --halcyon-mermaid-cluster-background-light: var(--halcyon-base-grey-lightest);
+    --halcyon-mermaid-cluster-border-light: var(--halcyon-base-blue-04);
+    --halcyon-mermaid-title-color-light: #8a5a00;
+    --halcyon-mermaid-note-background-light: var(--halcyon-base-grey-lightest);
+    --halcyon-mermaid-note-text-color-light: var(--halcyon-base-blue-01);
+    --halcyon-mermaid-note-border-color-light: var(--halcyon-base-blue-04);
+
+    // NOTE: Do not change these names, we use JS to get these resolved values
+    --halcyon-mermaid-background-dark: var(--halcyon-bg-dark);
+    --halcyon-mermaid-primary-color-dark: var(--halcyon-base-blue-03);
+    --halcyon-mermaid-primary-text-color-dark: var(--halcyon-base-grey-light);
+    --halcyon-mermaid-primary-border-color-dark: var(--halcyon-base-blue-04);
+    --halcyon-mermaid-secondary-color-dark: var(--halcyon-base-blue-02);
+    --halcyon-mermaid-tertiary-color-dark: var(--halcyon-base-blue-03);
+    --halcyon-mermaid-line-color-dark: var(--halcyon-base-blue-05);
+    --halcyon-mermaid-edge-label-background-dark: var(--halcyon-base-blue-02);
+    --halcyon-mermaid-cluster-background-dark: var(--halcyon-base-blue-02);
+    --halcyon-mermaid-cluster-border-dark: var(--halcyon-base-blue-04);
+    --halcyon-mermaid-title-color-dark: #ffcc66;
+    --halcyon-mermaid-note-background-dark: var(--halcyon-base-blue-03);
+    --halcyon-mermaid-note-text-color-dark: var(--halcyon-base-grey-light);
+    --halcyon-mermaid-note-border-color-dark: var(--halcyon-base-blue-04);
+}

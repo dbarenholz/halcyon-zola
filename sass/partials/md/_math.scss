@@ -1,0 +1,8 @@
+// mathjax styles
+mjx-container {
+    color: var(--halcyon-math-color);
+}
+
+mjx-container[display="true"] {
+    color: var(--halcyon-math-display-color);
+}

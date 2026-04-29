@@ -1,0 +1,8 @@
+{% set is_inline = inline or i | default(value=true) %}
+{% if is_inline %}
+${{ body | trim }}$
+{% else %}
+$$
+{{ body | trim }}
+$$
+{% endif %}

@@ -1,0 +1,10 @@
+:root {
+    // We'll work on a 2px unit
+    --radius-unit: 2px;
+
+    // And define our radia based on it
+    --radius-1: calc(1 * var(--radius-unit));
+    --radius-2: calc(2 * var(--radius-unit));
+    --radius-3: calc(3 * var(--radius-unit));
+    --radius-4: calc(4 * var(--radius-unit));
+}

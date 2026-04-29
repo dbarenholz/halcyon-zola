@@ -1,0 +1,40 @@
+{# This is the home page template with an intro and recent blog posts. #}
+{% extends "base.html" %}
+
+{% block content %}
+  {% set blog_section_name = config.extra.halcyon.blog_section | default(value="blog") %}
+  {% set blog = get_section(path=blog_section_name ~ "/_index.md") %}
+
+  <section class="hero">
+    <h1>{{ config.title | default(value="Halcyon Site") }}</h1>
+    {% if config.description %}
+      <p class="lede">{{ config.description }}</p>
+    {% endif %}
+    {% if section and section.content %}
+      <div class="prose">
+        {% set toc_marker = "<p>[TOC]</p>" %}
+        {% if section.content is containing(toc_marker) %}
+          {% include "partials/toc.html" %}
+        {% endif %}
+        {{ section.content | replace(from=toc_marker, to="") | safe }}
+      </div>
+    {% endif %}
+  </section>
+
+  <section class="stack">
+    <div class="section-heading-row">
+      <h2>Recent Posts</h2>
+      <a class="chip" href="{{ blog.permalink }}">View all</a>
+    </div>
+    {% if blog.pages | length > 0 %}
+      <div class="post-grid">
+        {% for post in blog.pages | sort(attribute="date") | reverse | slice(end=5) %}
+          {% set_global post_item = post %}
+          {% include "partials/post_card.html" %}
+        {% endfor %}
+      </div>
+    {% else %}
+      <p>No blog posts yet.</p>
+    {% endif %}
+  </section>
+{% endblock content %}
