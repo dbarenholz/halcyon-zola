@@ -8,7 +8,7 @@
           {% for item in nav_items %}
             {% set current = current_path and current_path == item.path %}
             <li>
-              <a href="{{ item.path }}" aria-current="page">{{ item.name }}</a>
+              <a href="{{ config.base_url ~ item.path }}" aria-current="page">{{ item.name }}</a>
             </li>
           {% endfor %}
         </ul>
