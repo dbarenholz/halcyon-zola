@@ -20,7 +20,7 @@ Certain choices have been made when creating this theme, mostly being due to not
 
 **Prerendered math**:
 
-This depends on Zola support either some sort of preprocessor, or custom scripts e.g. `./fix-math.sh $& zola build` or similar pattern. Depending on such script is not the intent of this theme, and is left to users to make (client-side mathjax of course still works).
+This depends on Zola support either some sort of preprocessor, or custom scripts e.g. `./fix-math.sh && zola build` or similar pattern. Depending on such script is not the intent of this theme, and is left to users to make (client-side mathjax of course still works).
 
 **Prerendered mermaid**:
 
