@@ -20,11 +20,11 @@ Certain choices have been made when creating this theme, mostly being due to not
 
 **Prerendered math**:
 
-This depends on Zola support either some sort of preprocessor, or custom scripts e.g. `./fix-math.sh & zola build` or similar pattern. Depending on such script is not the intent of this theme, and is left to users to make (client-side mathjax of course still works).
+This depends on Zola support either some sort of preprocessor, or custom scripts e.g. `./fix-math.sh $& zola build` or similar pattern. Depending on such script is not the intent of this theme, and is left to users to make (client-side mathjax of course still works).
 
 **Prerendered mermaid**:
 
-Again, we depend on Zola having some sort of preprocessor or you'd need a custom script that creates SVG files in dark and light mode, which then get loaded based on theme. Again, such script (e.g. `./fix-mermaid.sh & zola build`) is not the intent of this theme, and is left to users to make.
+Again, we depend on Zola having some sort of preprocessor or you'd need a custom script that creates SVG files in dark and light mode, which then get loaded based on theme. Again, such script (e.g. `./fix-mermaid.sh && zola build`) is not the intent of this theme, and is left to users to make.
 
 **Expose settings**:
 
