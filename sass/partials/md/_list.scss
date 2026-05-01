@@ -4,3 +4,29 @@ ol,
 li {
 	color: var(--text-color);
 }
+
+:root {
+	--md-list-marker-color: var(--halcyon-palette-lilac);
+}
+
+ul li::marker,
+ol li::marker {
+	color: var(--md-list-marker-color);
+}
+
+ol {
+	list-style-type: decimal;
+}
+
+ol ol {
+	list-style-type: lower-alpha;
+}
+
+ol ol ol,
+ol ol ol ol,
+ol ol ol ol ol,
+ol ol ol ol ol ol,
+ol ol ol ol ol ol ol,
+ol ol ol ol ol ol ol ol {
+	list-style-type: lower-roman;
+}

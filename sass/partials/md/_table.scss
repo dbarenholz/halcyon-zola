@@ -1,0 +1,37 @@
+:root {
+	--md-table-border: color-mix(in hsl, var(--halcyon-palette-lilac), transparent 68%);
+	--md-table-header-bg: color-mix(in hsl, var(--halcyon-palette-lilac), transparent 88%);
+	--md-table-row-alt-bg: color-mix(in hsl, var(--halcyon-palette-lilac), transparent 94%);
+	--md-table-row-hover-bg: color-mix(in hsl, var(--halcyon-palette-lilac), transparent 86%);
+}
+
+table {
+	width: 100%;
+	border-collapse: collapse;
+	border: var(--border-width) solid var(--md-table-border);
+	margin: var(--space-6) 0;
+}
+
+thead {
+	background-color: var(--md-table-header-bg);
+}
+
+th,
+td {
+	padding: var(--space-3) var(--space-4);
+	border: var(--border-width) solid var(--md-table-border);
+	text-align: left;
+	vertical-align: top;
+}
+
+tbody tr:nth-child(even) {
+	background-color: var(--md-table-row-alt-bg);
+}
+
+tbody tr {
+	transition: background-color 120ms ease;
+}
+
+tbody tr:hover {
+	background-color: var(--md-table-row-hover-bg);
+}
