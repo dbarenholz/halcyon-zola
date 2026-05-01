@@ -1,0 +1,10 @@
+figure {
+    background-color: light-dark(var(--halcyon-base-grey-light), var(--halcyon-base-blue-03));
+    width: fit-content;
+
+    figcaption {
+        font-size: var(--font-size-small);
+        text-align: center;
+        padding: var(--space-2) 0;
+    }
+}

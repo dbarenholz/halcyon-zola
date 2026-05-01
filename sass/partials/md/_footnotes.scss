@@ -1,0 +1,24 @@
+.footnote-definition {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    gap: 0.5em;
+
+    > p {
+        margin: 0;
+        padding: 0;
+    }
+}
+
+.footnote-reference {
+    padding: 0 0.1rem;
+}
+
+.footnote-definition-label {
+    font-family: var(--font-mono);
+    color: var(--halcyon-text-muted);
+
+    &::after {
+        content: " ->";
+    }
+}

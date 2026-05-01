@@ -50,3 +50,11 @@
 ///     C-->D;
 /// ```
 @use "md/mermaid";
+
+/// Styling for footnotes, e.g.
+/// This is a sentence with a footnote[^1].
+@use "md/footnotes";
+
+/// Styling for images, e.g.
+/// ![](https://www.example.com/image.jpg)
+@use "md/image";
