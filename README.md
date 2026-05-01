@@ -49,4 +49,4 @@ I want to be able to use Obsidian to author posts for my own site, for which I w
 
 ## License
 
-This project is licensed under the Apache License 2.0 - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the Apache License 2.0 - see the [LICENSE](LICENSE) file for details. Licenses for the fonts used can be found in the `static/fonts/licenses` directory. Lucide icons are either ISC or MIT licensed, see more [here](https://lucide.dev/license).

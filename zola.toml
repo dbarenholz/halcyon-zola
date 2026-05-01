@@ -13,11 +13,12 @@ feed_filenames = ["atom.xml"]
 
 taxonomies = [
     { name = "tags", feed = true },
-    { name = "categories", feed = true },
 ]
 
 [markdown]
 render_emoji = true
+github_alerts = true
+insert_anchor_links = "heading"
 
 [markdown.highlighting]
 dark_theme = "catppuccin-mocha"
@@ -26,16 +27,13 @@ style = "class"
 error_on_missing_language = true
 
 [extra]
-
-[extra.halcyon]
 default_theme = "dark"
-blog_section = "blog"
+blog_section = "features"
 show_reading_time = true
 nav = [
     # Add as many entries here as you want
     # if you add path ="/foo/", we expect a "content/foo.md" file
-    { name = "Code", path = "/code/" },
-    { name = "Testing", path = "/testing/" },
-    { name = "Math", path = "/math/" },
-    { name = "Blog", path = "/blog/" },
+    { name = "Navigation", path = "/navigation/" },
+    { name = "Content", path = "/content/" },
+    { name = "More Features", path = "/features/" }
 ]

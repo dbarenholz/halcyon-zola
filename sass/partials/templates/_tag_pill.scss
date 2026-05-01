@@ -1,0 +1,23 @@
+:root {
+    --tag-text: var(--halcyon-palette-cyan);
+    --tag-bg: light-dark(var(--halcyon-base-grey-light), var(--halcyon-base-blue-03));
+}
+
+.tag-pill {
+    display: inline-block;
+    padding: calc(0.25 * var(--spacing-unit)) var(--spacing-unit);
+    border-radius: var(--radius-4);
+    background-color: var(--tag-bg);
+    color: var(--tag-text);
+    font-size: var(--font-size-small);
+    font-family: var(--font-mono);
+
+    &::before {
+        content: "#";
+        margin-right: 0.2em;
+    }
+
+    &:hover {
+        filter: brightness(1.3);
+    }
+}

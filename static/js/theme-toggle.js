@@ -3,8 +3,7 @@
  * It works by toggling the "light" and "dark" classes on the body element, and saving the preference in localStorage.
  */
 (() => {
-    const storageKey = "halcyon-theme";
-    const body = document.body;
+    const storageKey = "theme";
     const toggle = document.querySelector("[data-theme-toggle]");
 
     /**
@@ -14,15 +13,17 @@
      * @returns 
      */
     const updateToggleIcon = (theme) => {
-        if (!toggle) {
-            return;
-        }
+        if (!toggle) return;
+
         const isDark = theme === "dark";
         const iconName = isDark ? "moon" : "sun";
         toggle.innerHTML = `<i data-lucide="${iconName}" aria-hidden="true"></i>`;
-        toggle.setAttribute("aria-label", isDark ? "Switch to light theme" : "Switch to dark theme");
+        toggle.setAttribute(
+            "aria-label",
+            isDark ? "Switch to light theme" : "Switch to dark theme"
+        );
 
-        if (globalThis.lucide && typeof globalThis.lucide.createIcons === "function") {
+        if (globalThis.lucide?.createIcons) {
             globalThis.lucide.createIcons({
                 attrs: {
                     width: "18",
@@ -34,36 +35,52 @@
     };
 
     /**
-     * Applies the given theme by updating the body classes and data attributes, and updating the toggle button icon.
+     * Applies the given theme by setting `color-scheme`.
      * 
-     * @param {String} theme the thene name, one of "light" or "dark"
+     * @param {String} theme the theme name, one of "light" or "dark" (or null for system prefs)
      */
     const applyTheme = (theme) => {
-        body.classList.remove("light", "dark");
-        body.classList.add(theme);
-        body.dataset.theme = theme;
-        updateToggleIcon(theme);
+        // forced theme
+        if (theme === "light" || theme === "dark") {
+            document.documentElement.style.colorScheme = theme;
+            localStorage.setItem(storageKey, theme);
+            updateToggleIcon(theme);
+            return;
+        }
+
+        // system prefs
+        document.documentElement.style.colorScheme = '';
+        localStorage.removeItem(storageKey);
+        
+        const systemTheme = globalThis.matchMedia("(prefers-color-scheme: dark)").matches 
+            ? "dark" 
+            : "light";
+
+        updateToggleIcon(systemTheme);
     };
-    // Get from local storage
+
+
+    // Initialize theme on page load
     const saved = localStorage.getItem(storageKey);
-    if (saved === "light" || saved === "dark") {
-        // If it's a valid theme, apply it.
-        applyTheme(saved);
-    } else if (body.classList.contains("light")) {
-        // Otherwise, try to match on body.light
-        updateToggleIcon("light");
-    } else {
-        // Default to dark if no preference is found.
-        updateToggleIcon("dark");
-    }
+    applyTheme(saved); // if not valid, applyTheme will fallback to system prefs
 
     // Listen for clicks on the toggle button to switch themes.
     if (toggle) {
         toggle.addEventListener("click", () => {
-            const next = body.classList.contains("dark") ? "light" : "dark";
+            const current = document.documentElement.style.colorScheme;
+            const next = current === "light" ? "dark" : "light";
             applyTheme(next);
-            localStorage.setItem(storageKey, next);
         });
     }
+
+    // Listen to system pref changes
+    globalThis.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", (e) => {
+        const saved = localStorage.getItem(storageKey);
+        const isTheme = saved === "light" || saved === "dark";
+
+        if (!isTheme) {
+            applyTheme(e.matches ? "dark" : "light");
+        }
+    });
 
 })();

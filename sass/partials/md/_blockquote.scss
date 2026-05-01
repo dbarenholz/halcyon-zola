@@ -1,24 +1,28 @@
+:root {
+	// Set this one on callouts
+	--blockquote-color: var(--halcyon-palette-orange);
+
+}
+
 blockquote {
+	// These need to be recomputed for each callout, thus live under blockquote.
+	--blockquote-bg: color-mix(in hsl, var(--blockquote-color), var(--halcyon-bg) 90%);
+	--blockquote-text: color-mix(in hsl, var(--text-color), var(--blockquote-color) 20%);
+	--blockquote-borders: color-mix(in hsl, var(--blockquote-color) 25%, transparent);
+
 	margin: var(--space-6) 0;
 	padding: var(--space-3) var(--space-4);
-	border-left: calc(2 * var(--radius-2)) solid var(--halcyon-palette-lilac);
+	border: var(--border-width) solid var(--blockquote-borders);
+	border-left: calc(2 * var(--radius-2)) solid var(--blockquote-color);
 	border-radius: var(--radius-2);
-	background: color-mix(in hsl, var(--halcyon-palette-lilac), var(--halcyon-bg) 90%);
-	color: color-mix(in hsl, var(--text-color), var(--halcyon-palette-lilac) 18%);
-}
+	background: var(--blockquote-bg);
 
-blockquote p {
-	margin: 0;
-}
+	p {
+		margin: 0;
+		color: var(--blockquote-text);
+	}
 
-blockquote p+p {
-	margin-top: var(--space-3);
-}
-
-blockquote cite {
-	display: block;
-	margin-top: var(--space-3);
-	color: var(--text-color-muted);
-	font-size: var(--font-size-small);
-	font-style: normal;
+	p+p {
+		margin-top: var(--space-3);
+	}
 }

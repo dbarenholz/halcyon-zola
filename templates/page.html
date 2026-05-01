@@ -8,7 +8,7 @@
       {% if page.date %}
         <p>
           <time datetime="{{ page.date }}">{{ page.date | date(format="%B %d, %Y") }}</time>
-          {% if config.extra.halcyon.show_reading_time | default(value=true) %}
+          {% if config.extra.show_reading_time | default(value=true) %}
             <span> • {{ page.reading_time }} min read</span>
           {% endif %}
         </p>

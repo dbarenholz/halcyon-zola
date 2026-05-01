@@ -1,0 +1,11 @@
+.post-subtitle {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-unit);
+    color: var(--halcyon-text-muted);
+
+    svg {
+        width: 1em;
+        height: 1em;
+    }
+}

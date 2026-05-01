@@ -55,7 +55,7 @@
     };
 
     const getThemeName = () =>
-        document.body.classList.contains('light') ? 'light' : 'dark';
+        document.documentElement.style.colorScheme || (globalThis.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
 
     const getCssVar = (name) =>
         getComputedStyle(document.documentElement).getPropertyValue(name).trim();
@@ -134,7 +134,7 @@
             lastThemeName = themeName;
             restoreDiagrams();
             renderDiagrams(mermaid);
-        }).observe(document.body, { attributes: true, attributeFilter: ['class'] });
+        }).observe(document.documentElement, { attributes: true, attributeFilter: ['style'] });
     };
 
     if (document.readyState === 'loading') {

@@ -1,12 +1,16 @@
-{# This partial renders a compact blog post preview card. #}
-<article class="post-card">
-  <h3><a href="{{ post_item.permalink }}">{{ post_item.title }}</a></h3>
-  {% if post_item.date %}
-    <p class="meta"><time datetime="{{ post_item.date }}">{{ post_item.date | date(format="%b %d, %Y") }}</time></p>
-  {% endif %}
-  {% if post_item.summary %}
-    <p>{{ post_item.summary | safe }}</p>
-  {% elif post_item.description %}
-    <p>{{ post_item.description }}</p>
-  {% endif %}
+<article class="postcard">
+  <div class="in-postcard">
+    <h3 class="postcard__title"><a href="{{ post_item.permalink }}">{{ post_item.title }}</a></h3>
+    {% if post_item.date %}
+      <p class="postcard__date"><time datetime="{{ post_item.date }}">{{ post_item.date | date(format="%b %d, %Y") }}</time></p>
+    {% endif %}
+    {% if post_item.summary %}
+      <p class="postcard__summary">{{ post_item.summary | safe }}</p>
+    {% elif post_item.description %}
+      <p class="postcard__summary">{{ post_item.description }}</p>
+    {% endif %}
+
+    {% set_global tags = post_item.taxonomies["tags"] %}
+    {% include "partials/tags.html" %}
+  <div>
 </article>

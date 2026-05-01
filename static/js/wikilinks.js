@@ -1,16 +1,24 @@
 /**
  * Wikilinks support for Zola, Obsidian-style [[page]] and [[page|display text]] syntax.
- *
- * This script transforms wikilink syntax in text content into proper anchor tags,
- * while avoiding transformation within code blocks, pre tags, and other special elements.
- *
- * Link resolution:
- * - [[page-name]] → /page-name/
- * - [[blog/article]] → /blog/article/
- * - [[page|Custom Text]] → anchor with custom display text
  */
 (() => {
     const skippedParentTags = new Set(["SCRIPT", "STYLE", "CODE", "PRE", "TEXTAREA"]);
+
+    const resolveSiteBasePath = () => {
+        const script = document.currentScript
+            || [...document.scripts].find((el) => /\/js\/wikilinks\.js(?:\?|$)/.test(el.src));
+
+        if (script?.src) {
+            const scriptUrl = new URL(script.src, globalThis.location.href);
+            return scriptUrl.pathname.replace(/\/js\/wikilinks\.js$/, '/');
+        }
+
+        return '/';
+    };
+
+    const siteBasePath = resolveSiteBasePath();
+
+    const joinPath = (base, path) => `${base.replace(/\/+$/, '')}/${path.replace(/^\/+/, '')}`;
 
     /**
      * Converts a page name/path to a URL slug.
@@ -23,19 +31,22 @@
         const slug = pageName
             .toLowerCase()
             .trim()
-            .replaceAll(/\s+/g, '-')
-            .replaceAll(/[^\w\-/]/g, '');
-        
+            .replaceAll(/\s+/g, '-');
+
         // Special case: "home" links to root
         if (slug === 'home') {
-            return '/';
+            return siteBasePath;
         }
-        
+
+        // Special case: #some-header links to in-page anchor
+        if (slug.startsWith('#')) {
+            const currentPage = globalThis.location.pathname.replace(/\/?$/, '/'); // Ensure trailing slash
+            return currentPage + slug;
+        }
+
         // Ensure leading slash, trailing slash
-        const url = '/' + slug.replaceAll(/^\/+|\/+$/g, '') + '/';
-        // Ensure we respect the base URL
-        const base = document.querySelector('base')?.getAttribute('href') || '/';
-        return base + url;
+        const url = slug.replaceAll(/^\/+|\/+$/g, '') + '/';
+        return joinPath(siteBasePath, url);
     };
 
     /**
@@ -53,7 +64,7 @@
             const text = node.textContent;
             // Match [[page]] or [[page|display text]]
             const wikiLinkPattern = /\[\[([^\]|]+)(?:\|([^\]]+))?\]\]/g;
-            
+
             if (wikiLinkPattern.test(text)) {
                 const fragment = document.createDocumentFragment();
                 let lastIndex = 0;
@@ -61,7 +72,7 @@
 
                 // Reset regex for iteration
                 wikiLinkPattern.lastIndex = 0;
-                
+
                 while ((match = wikiLinkPattern.exec(text)) !== null) {
                     // Add text before the match
                     if (match.index > lastIndex) {
@@ -70,10 +81,13 @@
                         );
                     }
 
-                    // Create anchor element
+                    // Create anchor element, removing leading # if any
                     const pageName = match[1].trim();
-                    const displayText = match[2]?.trim() || pageName;
+                    console.log('Matched page name:', pageName);
                     const url = pageNameToUrl(pageName);
+                    console.log('Generated URL:', url);
+                    const displayText = (match[2]?.trim() || pageName).replaceAll(/^#+/g, '');
+                    console.log('Display text:', displayText);
 
                     const link = document.createElement('a');
                     link.href = url;

@@ -2,11 +2,11 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <section class="stack">
-    <header class="section-heading-row">
+  <section>
+    <header>
       <h1>{{ section.title }}</h1>
       {% if section.generate_feed %}
-        <a class="chip" href="{{ section.permalink }}atom.xml">Feed</a>
+        <a href="{{ section.permalink }}atom.xml">Atom Feed</a>
       {% endif %}
     </header>
 

@@ -2,20 +2,13 @@
 @use "partials/md";
 @use "partials/templates";
 
+
 body {
     background-color: var(--halcyon-bg);
     margin: 0;
     min-height: 100svh;
     display: flex;
     flex-direction: column;
-}
-
-.light {
-    color-scheme: light;
-}
-
-.dark {
-    color-scheme: dark;
 }
 
 html {

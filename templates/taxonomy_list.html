@@ -2,16 +2,16 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <section class="stack">
-    <header class="section-heading-row">
+  <section>
+    <header>
       <h1>{{ taxonomy.name | title }}</h1>
     </header>
 
     {% if terms | length > 0 %}
-      <ul class="tag-list" aria-label="{{ taxonomy.name | title }}">
+      <ul aria-label="{{ taxonomy.name | title }}">
         {% for term in terms %}
           <li>
-            <a class="chip" href="{{ term.permalink }}">{{ term.name }} ({{ term.pages | length }})</a>
+            <a href="{{ term.permalink }}">{{ term.name }} ({{ term.pages | length }})</a>
           </li>
         {% endfor %}
       </ul>

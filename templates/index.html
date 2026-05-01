@@ -2,16 +2,16 @@
 {% extends "base.html" %}
 
 {% block content %}
-  {% set blog_section_name = config.extra.halcyon.blog_section | default(value="blog") %}
+  {% set blog_section_name = config.extra.blog_section | default(value="blog") %}
   {% set blog = get_section(path=blog_section_name ~ "/_index.md") %}
 
-  <section class="hero">
+  <section>
     <h1>{{ config.title | default(value="Halcyon Site") }}</h1>
     {% if config.description %}
-      <p class="lede">{{ config.description }}</p>
+      <p>{{ config.description }}</p>
     {% endif %}
     {% if section and section.content %}
-      <div class="prose">
+      <div>
         {% set toc_marker = "<p>[TOC]</p>" %}
         {% if section.content is containing(toc_marker) %}
           {% include "partials/toc.html" %}
@@ -21,14 +21,14 @@
     {% endif %}
   </section>
 
-  <section class="stack">
-    <div class="section-heading-row">
+  <section>
+    <div>
       <h2>Recent Posts</h2>
-      <a class="chip" href="{{ blog.permalink }}">View all</a>
+      <a href="{{ blog.permalink }}">View all</a>
     </div>
     {% if blog.pages | length > 0 %}
-      <div class="post-grid">
-        {% for post in blog.pages | sort(attribute="date") | reverse | slice(end=5) %}
+      <div class="posts">
+        {% for post in blog.pages | sort(attribute="date") | reverse | slice(end=4) %}
           {% set_global post_item = post %}
           {% include "partials/post_card.html" %}
         {% endfor %}

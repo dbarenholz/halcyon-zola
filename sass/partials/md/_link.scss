@@ -7,8 +7,8 @@ a {
     color: var(--link-color);
     text-decoration-color: color-mix(in hsl, var(--link-color), transparent 35%);
     text-underline-offset: 0.12em;
-}
 
-a:hover {
-    color: var(--link-color-hover);
+    &:hover {
+        color: var(--link-color-hover);
+    }
 }

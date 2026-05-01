@@ -2,21 +2,21 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <section class="stack">
-    <header class="section-heading-row">
-      <h1>{{ taxonomy.name | title }}: {{ term.name }}</h1>
-      <a class="chip" href="/{{ taxonomy.name }}/">All {{ taxonomy.name }}</a>
+  <section>
+    <header>
+      <h1> {{ term.name }}</h1>
+      {% set url = get_url(path=taxonomy.slug) %}
+      <a href="{{ url }}">All {{ taxonomy.name }}</a>
+      {% if section.generate_feed %}
+        <a href="{{ section.permalink }}atom.xml">Atom Feed</a>
+      {% endif %}
     </header>
 
-    {% if term.pages | length > 0 %}
-      <div class="post-grid">
-        {% for post in term.pages | sort(attribute="date") | reverse %}
-          {% set_global post_item = post %}
-          {% include "partials/post_card.html" %}
-        {% endfor %}
-      </div>
-    {% else %}
-      <p>No content has this {{ taxonomy.name | lower }} yet.</p>
-    {% endif %}
+    <div class="posts">
+      {% for post in term.pages | sort(attribute="date") | reverse %}
+        {% set_global post_item = post %}
+        {% include "partials/post_card.html" %}
+      {% endfor %}
+    </div>
   </section>
 {% endblock content %}

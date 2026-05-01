@@ -39,3 +39,14 @@
 /// Styling for tags, e.g.
 /// #books #fiction
 @use "md/tag";
+
+
+/// Styling for Mermaid diagrams
+/// ```mermaid
+/// graph TD;
+///     A-->B;
+///     A-->C;
+///     B-->D;
+///     C-->D;
+/// ```
+@use "md/mermaid";

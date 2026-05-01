@@ -1,0 +1,20 @@
+
+blockquote.markdown-alert-note {
+    --blockquote-color: var(--halcyon-palette-blue);
+}
+
+blockquote.markdown-alert-tip {
+    --blockquote-color: var(--halcyon-palette-lime);
+}
+
+blockquote.markdown-alert-important {
+    --blockquote-color: var(--halcyon-palette-lilac);
+}
+
+blockquote.markdown-alert-warning {
+    --blockquote-color: var(--halcyon-palette-yellow);
+}
+
+blockquote.markdown-alert-caution {
+    --blockquote-color: var(--halcyon-palette-salmon);
+}

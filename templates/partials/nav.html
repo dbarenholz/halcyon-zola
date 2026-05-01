@@ -1,14 +1,14 @@
-{% set nav_items = config.extra.halcyon.nav|default(value=[]) %}
+{% set nav_items = config.extra.nav|default(value=[]) %}
 <header class="site-header">
   <div class="container navigation-wrapper">
-    <a class="site-title" href="{{ config.base_url }}">{{ config.title|default(value='Halcyon') }}</a>
+    <a class="site-title" href="{{ get_url(path='') }}">{{ config.title|default(value='Halcyon') }}</a>
     <div class="nav-actions">
       <nav aria-label="Primary navigation">
         <ul class="nav-list">
           {% for item in nav_items %}
             {% set current = current_path and current_path == item.path %}
             <li>
-              <a href="{{ config.base_url ~ item.path }}" aria-current="page">{{ item.name }}</a>
+              <a href="{{ get_url(path=item.path) }}" aria-current="page">{{ item.name }}</a>
             </li>
           {% endfor %}
         </ul>
