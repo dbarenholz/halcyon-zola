@@ -7,7 +7,7 @@ Initially made mostly for my own use, partly with [Obsidian](https://obsidian.md
 
 The Halcyon theme is still new, and may change as I discover new things I want it to have. For now, here's what it does:
 
-1. Light and dark mode, JS-based switching by putting `dark` or `light` class on the `body`.
+1. Light and dark mode, JS-based switching using `color-scheme`.
 2. MathJax support for math rendering, both inline and display. This is (until I find a better way) done client side.
 3. Mermaid diagram support, also client side. Mermaid diagrams automatically switch between light and dark mode by re-rendering when the theme changes.
 4. Table of contents "support" (it's really rather hacky). It works by looking for the `[TOC]` string in the markdown content, and replacing it with a div that gets filled with the actual table of contents by JS.
