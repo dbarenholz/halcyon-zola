@@ -11,6 +11,8 @@
     color: var(--tag-text);
     font-size: var(--font-size-small);
     font-family: var(--font-mono);
+    white-space: nowrap;
+    flex: 0 0 auto;
 
     &::before {
         content: "#";

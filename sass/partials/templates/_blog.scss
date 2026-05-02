@@ -3,9 +3,50 @@
     align-items: center;
     gap: var(--spacing-unit);
     color: var(--halcyon-text-muted);
+    flex-wrap: nowrap;
 
     svg {
         width: 1em;
         height: 1em;
+        flex: 0 0 auto;
+    }
+}
+
+.post-subtitle__meta,
+.post-subtitle__tags {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-unit);
+    min-width: 0;
+    white-space: nowrap;
+}
+
+.post-subtitle__meta {
+    flex: 0 0 auto;
+}
+
+.post-subtitle__tags {
+    flex: 1 1 auto;
+
+    .tags {
+        flex: 1 1 auto;
+        min-width: 0;
+    }
+}
+
+@media (max-width: 48rem) {
+    .post-subtitle {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: calc(0.5 * var(--spacing-unit));
+    }
+
+    .post-subtitle__meta,
+    .post-subtitle__tags {
+        width: 100%;
+    }
+
+    .post-subtitle__tags-separator {
+        display: none;
     }
 }
