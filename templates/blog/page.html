@@ -1,8 +1,11 @@
 {% extends "base.html" %}
 
 {% block content %}
+  {% set blog_section_name = config.extra.blog_section | default(value="blog") %}
+  {% set blog = get_section(path=blog_section_name ~ "/_index.md") %}
+
   <article>
-    <p><a href="/{{ config.extra.blog_section }}">← back</a></p>
+    <p><a href="{{ blog.permalink }}">← back</a></p>
     <header>
       <h1>{{ page.title }}</h1>
       <div class="post-subtitle"> 
