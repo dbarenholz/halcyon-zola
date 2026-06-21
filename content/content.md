@@ -20,7 +20,7 @@ That's enough headers for now.
 
 ## Basic Markup
 
-Words can be **bold**, _italic_, or **_both_**. We can also have ~~strikethrough~~ text. Inline codeblocks? `hi! it's me!`. We've also got math for you, $f(x) = \int_{-\infty}^\infty \hat f(\xi)\,e^{2 \pi i \xi x}\,d\xi$. And of course, links: [Zola](https://www.getzola.org/), [Halcyon](https://halcyon-theme.netlify.app/), and [Lucide](https://lucide.dev/). Markdown also allows you to link to a header, so [here's the smallest one above](#the-above-header-is-lying).
+Words can be **bold**, _italic_, or **_both_**[^1]. We can also have ~~strikethrough~~ text[^2]. Inline codeblocks[^3]? `hi! it's me!`. We've also got math for you, $f(x) = \int_{-\infty}^\infty \hat f(\xi)\,e^{2 \pi i \xi x}\,d\xi$. And of course, links: [Zola](https://www.getzola.org/), [Halcyon](https://halcyon-theme.netlify.app/), and [Lucide](https://lucide.dev/). Markdown[^4] also[^4] allows[^4] you[^4] to[^4] link[^4] to[^4] a[^4] header[^4], so [here's the smallest one above](#the-above-header-is-lying). Clearly, footnotes exist too.
 
 ## Blocks: Lists
 
@@ -120,3 +120,8 @@ We can also play with alignment:
 | A | 1 | 🙂 |
 | B | 2 | 🙃 |
 | C | 3 | 😎 |
+
+[^1]: Hi!
+[^2]: Footnotes too!
+[^3]: Footnotes **can** _also_ `contain` $\text{ certain }$ markdown styling.
+[^4]: Nothing special here, just testing a very long footnotes to see how it shows up when using a mobile or other device that doesn't have the widest viewport. You know, cause it's useful to test these things.

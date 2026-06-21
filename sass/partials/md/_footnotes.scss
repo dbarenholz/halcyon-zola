@@ -17,6 +17,8 @@
 .footnote-definition-label {
     font-family: var(--font-mono);
     color: var(--halcyon-text-muted);
+    white-space: nowrap;
+    flex-shrink: 0;
 
     &::after {
         content: " ->";
