@@ -1,4 +1,4 @@
-# zola-halcyon
+# halcyon-zola
 
 A [halcyon](https://halcyon-theme.netlify.app/) inspired theme for [Zola](https://www.getzola.org/).
 Initially made mostly for my own use, partly with [Obsidian](https://obsidian.md/) in mind.
