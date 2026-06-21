@@ -1,6 +1,14 @@
 figure {
     background-color: light-dark(var(--halcyon-base-grey-light), var(--halcyon-base-blue-03));
     width: fit-content;
+    max-width: 100%;
+    margin-inline: 0;
+
+    img {
+        max-width: 100%;
+        height: auto;
+        display: block; // Removes bottom gap below image
+    }
 
     figcaption {
         font-size: var(--font-size-small);
