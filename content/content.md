@@ -47,6 +47,14 @@ Next, ordered lists:
     2. Subitem 2
 3. Third item
 
+And finally, task lists:
+
+- [ ] do this
+- [x] and this
+  - [ ] but then first this one
+  - [ ] and this one
+- [ ] do this
+
 ## Blocks: quotes, and callouts
 
 > Do note that blockquotes look pretty nice. Right?
