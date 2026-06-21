@@ -44,7 +44,6 @@ I want to be able to use Obsidian to author posts for my own site, for which I w
 
 ## Known issues
 
-- Currently, mermaid diagrams are re-rendered on theme change, which causes them to "flicker" into existence. This then screws with the scroll position of the page.
 - I'm doing something wrong with the `toc` shortcode, and it currently doesn't work. Please use `[TOC]` instead.
 
 ## License

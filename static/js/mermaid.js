@@ -128,12 +128,15 @@
 
         // Re-render whenever the body theme class changes.
         let lastThemeName = getThemeName();
-        new MutationObserver(() => {
+        new MutationObserver(async () => {
             const themeName = getThemeName();
             if (themeName === lastThemeName) return;
             lastThemeName = themeName;
+            
+            const scrollY = window.scrollY;
             restoreDiagrams();
-            renderDiagrams(mermaid);
+            await renderDiagrams(mermaid);
+            window.scrollTo({ top: scrollY, behavior: 'instant' });
         }).observe(document.documentElement, { attributes: true, attributeFilter: ['style'] });
     };
 
