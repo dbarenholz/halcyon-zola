@@ -14,17 +14,31 @@ The Halcyon theme is still new, and may change as I discover new things I want i
 5. Wikilink "support" (also rather hacky). This is done by looking for `[[` and `]]` in the rendered HTML content after-the-fact, and replacing it with a link to the corresponding page. If the page doesn't exist, it naturally is 404. This is bad for SEO.
 6. Stylable Lucide icons. All icons are included in the theme. You can use the `icon` shortcode to include them in your content, though generally speaking you probably want to use them in custom templates instead.
 
-## Future work
+## Zola limitations
 
-Certain choices have been made when creating this theme, mostly being due to not wanting users to depend on a custom Zola fork.
+Certain choices have been made when creating this theme, due to not wanting users to depend on a custom Zola fork or custom build script(s).
 
 **Prerendered math**:
 
-This depends on Zola support either some sort of preprocessor, or custom scripts e.g. `./fix-math.sh && zola build` or similar pattern. Depending on such script is not the intent of this theme, and is left to users to make (client-side mathjax of course still works).
+This depends on Zola supporting either some sort of preprocessor, or custom scripts e.g. `./fix-math.sh && zola build` or similar pattern.
+Depending on such script is not the intent of this theme, and is left to users to make (client-side mathjax of course still works).
+See https://github.com/getzola/zola/issues/3158 for Zola's progress. Also relevant is https://github.com/getzola/zola/issues/2794 which would allow a script to run in preprocess mode.
 
 **Prerendered mermaid**:
 
-Again, we depend on Zola having some sort of preprocessor or you'd need a custom script that creates SVG files in dark and light mode, which then get loaded based on theme. Again, such script (e.g. `./fix-mermaid.sh && zola build`) is not the intent of this theme, and is left to users to make.
+This depends on Zola having some sort of preprocessor or you'd need a custom script that creates SVG files in dark and light mode, which then get loaded based on theme.
+Depending on such script (e.g. `./fix-mermaid.sh && zola build`) is not the intent of this theme, and is left to users to make.
+See https://github.com/getzola/zola/issues/3158 for Zola's progress. Also relevant is https://github.com/getzola/zola/issues/2794 which would allow a script to run in preprocess mode.
+
+**Wikilinks**:
+
+Right now Zola doesn't support wikilinks. My hope is that this will be added in the future. The current implementation is hacky and not the best for SEO. The intent is to replace it with native support once Zola supports it, but for now this is what we have. See https://github.com/getzola/zola/pull/3116 for progress.
+
+**Obsidian compatibility**:
+
+I want to be able to use Obsidian to author posts for my own site, for which I wrote this theme. This means that I want wikilinks, math, mermaid diagrams as I currently have. But also, I'd want Properties to work, as well as Bases. This is a long-term goal, and may never be realized when sticking to vanilla Zola, possibly requiring a custom fork. It'd be nice if Zola supported some sort of plugin system though!
+
+## Future Work
 
 **Expose settings**:
 
@@ -34,13 +48,6 @@ Right now, many things are hardcoded in the theme. It would be _very_ nice to ex
 
 I need to have a good look once I port my site over to use this theme to see how I want to implement this. I want to be able to filter based on categories, as well as search through the content of posts.
 
-**Wikilinks**:
-
-Right now Zola doesn't support wikilinks. My hope is that this will be added in the future. The current implementation is hacky and not the best for SEO. The intent is to replace it with native support once Zola supports it, but for now this is what we have.
-
-**Obsidian compatibility**:
-
-I want to be able to use Obsidian to author posts for my own site, for which I wrote this theme. This means that I want wikilinks, math, mermaid diagrams as I currently have. But also, I'd want Properties to work, as well as Bases. This is a long-term goal, and may never be realized when sticking to vanilla Zola, possibly requiring a custom fork. It'd be nice if Zola supported some sort of plugin system though!
 
 ## License
 
