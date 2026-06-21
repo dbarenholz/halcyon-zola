@@ -4,6 +4,12 @@
     align-items: baseline;
     gap: 0.5em;
 
+    &:first-of-type {
+        margin-top: 3rem;
+        padding-top: 1rem;
+        border-top: 1px solid color-mix(in hsl, var(--halcyon-text-muted), transparent 50%);
+    }
+
     > p {
         margin: 0;
         padding: 0;
