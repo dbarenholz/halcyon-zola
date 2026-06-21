@@ -42,10 +42,6 @@ Right now Zola doesn't support wikilinks. My hope is that this will be added in 
 
 I want to be able to use Obsidian to author posts for my own site, for which I wrote this theme. This means that I want wikilinks, math, mermaid diagrams as I currently have. But also, I'd want Properties to work, as well as Bases. This is a long-term goal, and may never be realized when sticking to vanilla Zola, possibly requiring a custom fork. It'd be nice if Zola supported some sort of plugin system though!
 
-## Known issues
-
-- I'm doing something wrong with the `toc` shortcode, and it currently doesn't work. Please use `[TOC]` instead.
-
 ## License
 
 This project is licensed under the Apache License 2.0 - see the [LICENSE](LICENSE) file for details. Licenses for the fonts used can be found in the `static/fonts/licenses` directory. Lucide icons are either ISC or MIT licensed, see more [here](https://lucide.dev/license).

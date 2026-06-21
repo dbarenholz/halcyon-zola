@@ -8,7 +8,7 @@ taxonomies:
 
 From Typora days I've become accustomed to generating a table of contents with `[TOC]` syntax. This is a feature that Zola doesn't have built-in support for, but it's easy enough to add since Zola _does_ keep track of the actual headings in the page.
 
-[TOC]
+{{ toc() }}
 
 Even if the [TOC] string is placed inline here, it is shown on the top of the page. And, as you can see, including it a second time as I've done, doesn't generate a second one or errors out. Below are some unused headers so you can see how everything works.
 
